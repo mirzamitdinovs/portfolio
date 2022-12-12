@@ -17,7 +17,7 @@ export default [
 	{
 		title: 'Projects',
 		path: '/projects',
-		icon: <i className='fa-solid fa-address-book' />,
+		icon: <i className='fa fa-code' />,
 	},
 	{
 		title: 'Certificates',
