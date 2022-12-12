@@ -43,9 +43,7 @@ function MyApp({ Component, pageProps }) {
 				<link rel='stylesheet' href='css/vendor/jquery.modal.min.css' />
 
 				<link rel='stylesheet' href='css/custom.css' />
-				<title>
-					Home - Bostami Tailwind CSS Personal Portfolio HTML Template{' '}
-				</title>
+				<title>Sayyod Mirzamitdinov</title>
 			</Head>
 			<div className='bg-homeBg min-h-screen dark:bg-homeBg-dark bg-no-repeat bg-center bg-cover bg-fixed md:pb-16 w-full'>
 				<div className='z-50'>
