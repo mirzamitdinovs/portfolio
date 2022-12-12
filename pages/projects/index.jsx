@@ -3,7 +3,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import ProjectModal from '../../components/ProjectModal';
 import projectsData from '../../data/projects.data';
-
+import Footer from '../../components/Footer';
 const Projects = () => {
 	const modalRef = useRef(null);
 
@@ -40,21 +40,7 @@ const Projects = () => {
 						</div>
 					</div>
 				</div>
-				<footer className='overflow-hidden rounded-b-2xl bg-[#f8fbfb] dark:bg-[#212425]'>
-					<p className='text-center py-6 text-gray-lite dark:text-color-910'>
-						{' '}
-						© 2022 All Rights Reserved by{' '}
-						<a
-							className='hover:text-[#FA5252] duration-300 transition'
-							href='#'
-							target='_blank'
-							rel='noopener noreferrer'
-						>
-							Drz-themes
-						</a>
-						.{' '}
-					</p>
-				</footer>
+				<Footer />
 				<ProjectModal ref={modalRef} />
 			</div>
 		</div>
