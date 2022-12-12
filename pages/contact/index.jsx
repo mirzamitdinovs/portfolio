@@ -15,6 +15,7 @@ const ContactPage = () => {
 							<div className='w-full lg:w-[40%] xl:w-[30%] space-y-6'>
 								{userData.personal_info.slice(0, 3).map((item, index) => (
 									<div
+										key={index}
 										className={`flex flex-wrap ${item.bg_color} dark:bg-transparent p-[30px] dark:border-[#212425] dark:border-2 gap-2 rounded-xl`}
 									>
 										<span className='w-8 mt-2'>
@@ -42,7 +43,7 @@ const ContactPage = () => {
 								>
 									<h3 className='text-4xl'>
 										<span className='text-gray-lite dark:text-[#A6A6A6]'>
-											I'm always open to discussing product
+											I&apos;m always open to discussing product
 										</span>
 										<br />
 										<span className='font-semibold dark:text-white'>

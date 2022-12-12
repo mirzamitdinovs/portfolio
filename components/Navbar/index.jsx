@@ -9,12 +9,8 @@ const Navbar = () => {
 				<div className='flex justify-between w-full items-center space-x-4 lg:my-8 my-5'>
 					{/* website logo */}
 					<Link href='/' className='text-3xl font-semibold text-[#EC6187]'>
-						{/* <img
-							className='h-[26px] lg:h-[32px]'
-							src='images/logo/logo.png'
-							alt='logo'
-						/> */}
-						devsayyod
+						<img className='h-[26px] lg:h-[32px]' src='logo.png' alt='logo' />
+						{/* devsayyod */}
 					</Link>
 					<div className='flex items-center'>
 						{/* light and dark mode button */}

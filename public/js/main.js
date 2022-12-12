@@ -22,9 +22,7 @@
 			bostami.setDark1();
 			bostami.setLight();
 			bostami.setLight1();
-			// bostami.istopeActivation();
 			bostami.preloader();
-			// bostami.slickActive();
 		},
 
 		// mobile view dark to light function

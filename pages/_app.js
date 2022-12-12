@@ -44,7 +44,6 @@ function MyApp({ Component, pageProps }) {
 				/>
 				{/*=== main css ===*/}
 				<link rel='stylesheet' href='css/tailwind.css' />
-				<link rel='stylesheet' href='css/vendor/slick.css' />
 				<link rel='stylesheet' href='css/vendor/jquery.modal.min.css' />
 
 				<link rel='stylesheet' href='css/custom.css' />
@@ -64,15 +63,7 @@ function MyApp({ Component, pageProps }) {
 				strategy='beforeInteractive'
 				src='js/vendor/jquary.min.js'
 			></Script>
-			<Script strategy='beforeInteractive' src='js/vendor/slick.js'></Script>
-			<Script
-				strategy='beforeInteractive'
-				src='js/vendor/jquery.modal.min.js'
-			></Script>
-			<Script
-				strategy='beforeInteractive'
-				src='js/vendor/isotope.pkgd.min.js'
-			></Script>
+
 			<Script strategy='afterInteractive' src='js/main.js'></Script>
 		</div>
 	);

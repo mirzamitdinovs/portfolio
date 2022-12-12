@@ -15,8 +15,8 @@ export default [
 		icon: <i className='fa-regular fa-file-lines' />,
 	},
 	{
-		title: 'Works',
-		path: '/works',
+		title: 'Projects',
+		path: '/projects',
 		icon: <i className='fa-solid fa-address-book' />,
 	},
 	{
