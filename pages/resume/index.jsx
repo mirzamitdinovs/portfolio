@@ -10,16 +10,39 @@ const ResumePage = () => {
 							{' '}
 							Resume{' '}
 						</h2>
-						<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6'>
-							{/* eductation contain */}
-							<div>
-								<div className='flex items-center space-x-2 mb-4'>
-									<i className='fa-solid text-6xl text-[#F95054] fa-graduation-cap' />
-									<h4 className='text-5xl dark:text-white font-medium'>
-										{' '}
-										Education{' '}
-									</h4>
-								</div>
+						<div>
+							<div className='flex items-center space-x-2 mb-4'>
+								<i className='fa-solid text-6xl text-[#F95054] fa-graduation-cap' />
+								<h4 className='text-5xl dark:text-white font-medium'>
+									{' '}
+									Experience{' '}
+								</h4>
+							</div>
+							<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6'>
+								{resumeData.experience.map((item, index) => (
+									<div
+										key={index}
+										className={`py-4 dark:bg-transparent ${item.color} pl-5 pr-3 space-y-2 mb-6 rounded-lg dark:border-[#212425] dark:border-2`}
+									>
+										<span className='text-tiny text-gray-lite dark:text-[#b7b7b7]'>
+											{item.from}-{item.to}
+										</span>
+										<h3 className='text-xl dark:text-white'>{item.title}</h3>
+										<p className='dark:text-[#b7b7b7]'>{item.company}</p>
+									</div>
+								))}
+							</div>
+						</div>
+
+						<div className='mt-5'>
+							<div className='flex items-center space-x-2 mb-4'>
+								<i className='fa-solid text-6xl text-[#F95054] fa-graduation-cap' />
+								<h4 className='text-5xl dark:text-white font-medium'>
+									{' '}
+									Education{' '}
+								</h4>
+							</div>
+							<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6'>
 								{resumeData.education.map((item, index) => (
 									<div
 										key={index}
@@ -30,49 +53,6 @@ const ResumePage = () => {
 										</span>
 										<h3 className='text-xl dark:text-white'>{item.title}</h3>
 										<p className='dark:text-[#b7b7b7]'>{item.school}</p>
-									</div>
-								))}
-							</div>
-							<div>
-								{/* Experience contain */}
-								<div className='flex items-center space-x-2 mb-4'>
-									<i className='fa-solid text-6xl text-[#F95054] fa-briefcase' />
-									<h4 className='text-5xl dark:text-white font-medium'>
-										{' '}
-										Experience{' '}
-									</h4>
-								</div>
-								{resumeData.experience.slice(0, 3).map((item, index) => (
-									<div
-										key={index}
-										className={`py-4 dark:bg-transparent ${item.color} pl-5 pr-3 space-y-2 mb-6 rounded-lg dark:border-[#212425] dark:border-2`}
-									>
-										<span className='text-tiny text-gray-lite dark:text-[#b7b7b7]'>
-											{item.from}-{item.to}
-										</span>
-										<h3 className='text-xl dark:text-white'>{item.title}</h3>
-										<p className='dark:text-[#b7b7b7]'>{item.company}</p>
-									</div>
-								))}
-							</div>
-							<div>
-								<div className='flex items-center space-x-2 mb-4 pt-14'>
-									{/* <i className='fa-solid fa-award text-6xl text-[#F95054]' /> */}
-									<h4 className='text-5xl dark:text-white font-medium mb-1'>
-										{' '}
-										{/* Awards{' '} */}
-									</h4>
-								</div>
-								{resumeData.experience.slice(3).map((item, index) => (
-									<div
-										key={index}
-										className={`py-4 dark:bg-transparent ${item.color} pl-5 pr-3 space-y-2 mb-6 rounded-lg dark:border-[#212425] dark:border-2`}
-									>
-										<span className='text-tiny text-gray-lite dark:text-[#b7b7b7]'>
-											{item.from}-{item.to}
-										</span>
-										<h3 className='text-xl dark:text-white'>{item.title}</h3>
-										<p className='dark:text-[#b7b7b7]'>{item.company}</p>
 									</div>
 								))}
 							</div>
