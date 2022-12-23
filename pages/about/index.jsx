@@ -7,6 +7,7 @@ import userData from '../../data/user.data';
 import whatidoData from '../../data/whatido.data';
 import { useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
+import Image from 'next/image';
 const AboutPage = () => {
 	const { user } = useContext(UserContext);
 	const settings = {
@@ -52,10 +53,12 @@ const AboutPage = () => {
 						<div className='grid grid-cols-12 md:gap-10 pt-4 md:pt-[40px] items-center'>
 							<div className='col-span-12 md:col-span-4'>
 								{/* about me image */}
-								<img
+								<Image
 									className='w-full md:w-[330px] md:h-[400px] object-cover overflow-hidden rounded-[35px] mb-3 md:mb-0'
-									src={user.avatarAbout.fields.file.url}
+									src={`https:${user.avatarAbout.fields.file.url}`}
 									alt='about image'
+									width={330}
+									height={400}
 								/>
 							</div>
 							<div className='col-span-12 md:col-span-8 space-y-2.5'>

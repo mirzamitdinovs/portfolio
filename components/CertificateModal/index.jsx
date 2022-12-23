@@ -1,6 +1,7 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import CustomModal from '../Modal';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Image from 'next/image';
 const CertificateModal = (props, ref) => {
 	const [item, setItem] = useState(null);
 	const modalRef = useRef(null);
@@ -17,10 +18,12 @@ const CertificateModal = (props, ref) => {
 			{item ? (
 				<div className='dark:scrollbarDark scrollbarLight overflow-y-scroll max-h-[60vh] lg:max-h-[80vh]'>
 					<div className='pr-3 pb-2'>
-						<img
-							className='w-full md:h-[450px] object-cover rounded-xl mt-6'
-							src={item.fields.image.fields.file.url}
-							alt='blog image'
+						<Image
+							className='h-full w-full object-cover'
+							src={`https:${item.fields.image.fields.file.url}`}
+							alt='brand'
+							width={500}
+							height={450}
 						/>
 						<h2 className='dark:text-white sm:text-3xl mt-4 font-medium underline text-blue-500'>
 							<a

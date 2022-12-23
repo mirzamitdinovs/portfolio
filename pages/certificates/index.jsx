@@ -3,6 +3,7 @@ import CertificateModal from '../../components/CertificateModal';
 import Footer from '../../components/Footer';
 import Loader from '../../components/Loader';
 import CertificatesContext from '../../contexts/CertificatesContext';
+import Image from 'next/image';
 const CertificatesPage = () => {
 	const { certificates } = useContext(CertificatesContext);
 	const [categories, setCategories] = useState([]);
@@ -75,10 +76,12 @@ const CertificatesPage = () => {
 								}] p-1 dark:bg-transparent dark:border-[2px] border-[#212425]`}
 							>
 								<div className='overflow- rounded-lg'>
-									<img
-										className='w-full  cursor-pointer transition duration-200 ease-in-out transform hover:scale-110 rounded-lg h-auto'
-										src={item.fields.image.fields.file.url}
-										alt='portfolio image'
+									<Image
+										className='rounded-lg w-full object-cover h-40 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
+										src={`https:${item.fields.image.fields.file.url}`}
+										alt='blog image'
+										width={300}
+										height={160}
 									/>
 								</div>
 								<span className='pt-5 px-3 text-[14px] font-normal text-gray-lite block dark:text-[#A6A6A6]'>

@@ -1,17 +1,20 @@
 import { useContext } from 'react';
 import UserContext from '../contexts/UserContext';
-
+import Image from 'next/image';
 export default function Home() {
 	const { user } = useContext(UserContext);
+	console.log('user: ', user);
 	return (
 		<div
 			className='flex flex-col items-center h-[100vh] md:h-[90vh] lg:h-[80vh] xl:h-[71vh] justify-center aos-init aos-animate'
 			data-aos='fade'
 		>
-			<img
+			<Image
 				className='rounded-full w-[250px] h-[250px] 2xl:w-[280px] 2xl:h-[280px]'
-				src={user.avatarMain.fields.file.url}
+				src={`https:${user.avatarMain.fields.file.url}`}
 				alt='about avatar'
+				width={250}
+				height={250}
 			/>
 			<h3 className='mt-6 mb-1 text-5xl font-semibold dark:text-white'>
 				{' '}

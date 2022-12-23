@@ -6,6 +6,7 @@ import projectsData from '../../data/projects.data';
 import Footer from '../../components/Footer';
 import ProjectsContext from '../../contexts/ProjectsContext';
 import Loader from '../../components/Loader';
+import Image from 'next/image';
 const Projects = () => {
 	const { projects } = useContext(ProjectsContext);
 	const modalRef = useRef(null);
@@ -29,10 +30,12 @@ const Projects = () => {
 									className='p-1  rounded-lg mb-2 h-full bg-[#fcf4ff] dark:bg-transparent dark:border-[#212425] dark:border-2'
 								>
 									<div className='overflow-hidden  rounded-lg'>
-										<img
+										<Image
 											className='rounded-lg w-full object-cover h-40 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
-											src={item.fields.images[0].fields.file.url}
+											src={`https:${item.fields.images[0].fields.file.url}`}
 											alt='blog image'
+											width={300}
+											height={160}
 										/>
 									</div>
 									<div className='px-2 flex mt-4 text-tiny text-gray-lite dark:text-[#A6A6A6]'>

@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import clientsData from '../../data/clients.data';
 import CustomModal from '../Modal';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Image from 'next/image';
 const settings = {
 	slidesToShow: 1,
 	slidesToScroll: 1,
@@ -30,10 +31,12 @@ const ProjectModal = (props, ref) => {
 						<Slider {...settings}>
 							{item.fields.images?.map((image, index) => (
 								<div key={index} className='h-80 w-full'>
-									<img
+									<Image
 										className='h-full w-full object-cover'
-										src={image.fields.file.url}
+										src={`https:${image.fields.file.url}`}
 										alt='brand'
+										width={500}
+										height={320}
 									/>
 								</div>
 							))}

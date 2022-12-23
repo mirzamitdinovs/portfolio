@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import navbarData from '../../data/navbar.data';
 import { useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
+import Image from 'next/image';
 const Navbar = () => {
 	const { user } = useContext(UserContext);
 	const { asPath } = useRouter();
@@ -12,10 +13,11 @@ const Navbar = () => {
 				<div className='flex justify-between w-full items-center space-x-4 lg:my-8 my-5'>
 					{/* website logo */}
 					<Link href='/' className='text-3xl font-semibold text-[#EC6187]'>
-						<img
-							className='h-[26px] lg:h-[32px]'
-							src={user.logo?.fields.file.url}
+						<Image
+							src={`https:${user.logo?.fields.file.url}`}
 							alt='logo'
+							height={100}
+							width={150}
 						/>
 						{/* devsayyod */}
 					</Link>
