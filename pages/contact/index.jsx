@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import Footer from '../../components/Footer';
-import userData from '../../data/user.data';
+import UserContext from '../../contexts/UserContext';
 
 const ContactPage = () => {
+	const { user } = useContext(UserContext);
 	return (
 		<div className='bg-white lg:rounded-2xl dark:bg-[#111111]'>
 			<div data-aos='fade' className='aos-init aos-animate'>
@@ -12,31 +14,66 @@ const ContactPage = () => {
 						</h2>
 						<div className='lg:flex gap-x-20'>
 							{/* personal contact information */}
-							<div className='w-full lg:w-[40%] xl:w-[30%] space-y-6'>
-								{userData.personal_info.slice(0, 3).map((item, index) => (
-									<div
-										key={index}
-										className={`flex flex-wrap ${item.bg_color} dark:bg-transparent p-[30px] dark:border-[#212425] dark:border-2 gap-2 rounded-xl`}
-									>
-										<span className='w-8 mt-2'>
-											<img
-												src={item.image}
-												alt='icon'
-												className='text-4xl dark:text-white'
-											/>
-										</span>
-										<div className='space-y-2'>
-											<p className='text-xl font-semibold dark:text-white'>
-												{item.title}:
-											</p>
-											<p className='text-gray-lite text-lg dark:text-[#A6A6A6]'>
-												{item.value}
-											</p>
-										</div>
+							<div className='w-full lg:w-[60%] xl:w-[40%] space-y-6'>
+								<div
+									className={`flex flex-wrap bg-[#fcf4ff] dark:bg-transparent p-[30px] dark:border-[#212425] dark:border-2 gap-2 rounded-xl`}
+								>
+									<span className='w-8 mt-2'>
+										<img
+											src='images/contact/phone-call.png'
+											alt='icon'
+											className='text-4xl dark:text-white'
+										/>
+									</span>
+									<div className='space-y-2'>
+										<p className='text-xl font-semibold dark:text-white'>
+											Phone:
+										</p>
+										<p className='text-gray-lite text-lg dark:text-[#A6A6A6]'>
+											{user.phone}
+										</p>
 									</div>
-								))}
+								</div>
+								<div
+									className={`flex flex-wrap bg-[#eefbff] dark:bg-transparent p-[30px] dark:border-[#212425] dark:border-2 gap-2 rounded-xl`}
+								>
+									<span className='w-8 mt-2'>
+										<img
+											src='images/contact/map.png'
+											alt='icon'
+											className='text-4xl dark:text-white'
+										/>
+									</span>
+									<div className='space-y-2'>
+										<p className='text-xl font-semibold dark:text-white'>
+											Address:
+										</p>
+										<p className='text-gray-lite text-lg dark:text-[#A6A6A6]'>
+											{user.address}
+										</p>
+									</div>
+								</div>{' '}
+								<div
+									className={`flex flex-wrap bg-[#fcf4ff] dark:bg-transparent p-[30px] dark:border-[#212425] dark:border-2 gap-2 rounded-xl`}
+								>
+									<span className='w-8 mt-2'>
+										<img
+											src='images/contact/email.png'
+											alt='icon'
+											className='text-4xl dark:text-white'
+										/>
+									</span>
+									<div className='space-y-2'>
+										<p className='text-xl font-semibold dark:text-white'>
+											Email:
+										</p>
+										<p className='text-gray-lite text-lg dark:text-[#A6A6A6]'>
+											{user.email}
+										</p>
+									</div>
+								</div>
 							</div>
-							<div className='w-full mt-8 lg:mt-0 lg:w-[60%] xl:w-[70%]'>
+							<div className='w-full mt-8 lg:mt-0 lg:w-[40%] xl:w-[60%]'>
 								<div
 									data-aos='fade'
 									className='dark:border-[#212425] dark:border-2 mb-16 md:p-[48px] p-4 bg-color-810 rounded-xl dark:bg-[#111111] mb-[30px] md:mb-[60px] aos-init aos-animate'

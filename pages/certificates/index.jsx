@@ -1,30 +1,35 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import CertificateModal from '../../components/CertificateModal';
 import Footer from '../../components/Footer';
-import certificatesData from '../../data/certificates.data';
+import Loader from '../../components/Loader';
+import CertificatesContext from '../../contexts/CertificatesContext';
 const CertificatesPage = () => {
+	const { certificates } = useContext(CertificatesContext);
 	const [categories, setCategories] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState('all');
 
 	useEffect(() => {
-		if (!categories.length) {
+		if (!categories.length && certificates) {
 			setCategories([
-				...new Set(certificatesData.map((item) => item.category)),
+				...new Set(certificates.map((item) => item.fields.school)),
 			]);
 		}
-	}, []);
+	}, [certificates]);
 	const modalRef = useRef(null);
 
 	const filterData = () => {
 		if (selectedCategory === 'all') {
-			return certificatesData;
+			return certificates;
 		} else {
-			return certificatesData.filter(
-				(item) => item.category === selectedCategory
+			return certificates.filter(
+				(item) => item.fields.school === selectedCategory
 			);
 		}
 	};
 
+	if (!certificates) {
+		return <Loader />;
+	}
 	return (
 		<section className='bg-white  lg:rounded-2xl dark:bg-[#111111]'>
 			<div className='container mb-8 px-4 sm:px-5 md:px-10 lg:px-[60px]'>
@@ -72,15 +77,15 @@ const CertificatesPage = () => {
 								<div className='overflow- rounded-lg'>
 									<img
 										className='w-full  cursor-pointer transition duration-200 ease-in-out transform hover:scale-110 rounded-lg h-auto'
-										src={item.image}
+										src={item.fields.image.fields.file.url}
 										alt='portfolio image'
 									/>
 								</div>
 								<span className='pt-5 px-3 text-[14px] font-normal text-gray-lite block dark:text-[#A6A6A6]'>
-									{item.category}
+									{item.fields.school}
 								</span>
 								<h2 className='min-h-[70px] px-3 font-medium cursor-pointer text-xl duration-300 transition hover:text-[#FA5252] dark:hover:text-[#FA5252] dark:text-white mt-2'>
-									{item.title}
+									{item.fields.title}
 								</h2>
 							</div>
 						</div>

@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import navbarData from '../../data/navbar.data';
+import { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 const Navbar = () => {
+	const { user } = useContext(UserContext);
 	const { asPath } = useRouter();
 	return (
 		<header className='flex justify-between items-center fixed top-0 left-0 w-full lg:static z-[1111111111]'>
@@ -9,7 +12,11 @@ const Navbar = () => {
 				<div className='flex justify-between w-full items-center space-x-4 lg:my-8 my-5'>
 					{/* website logo */}
 					<Link href='/' className='text-3xl font-semibold text-[#EC6187]'>
-						<img className='h-[26px] lg:h-[32px]' src='logo.png' alt='logo' />
+						<img
+							className='h-[26px] lg:h-[32px]'
+							src={user.logo?.fields.file.url}
+							alt='logo'
+						/>
 						{/* devsayyod */}
 					</Link>
 					<div className='flex items-center'>

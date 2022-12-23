@@ -1,8 +1,14 @@
+import '../styles/globals.css';
+
 import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
+
 import Navbar from '../components/Navbar';
-import '../styles/globals.css';
+import { CertificatesProvider } from '../contexts/CertificatesContext';
+import { ProjectsProvider } from '../contexts/ProjectsContext';
+import { ResumeProvider } from '../contexts/ResumeContext';
+import { UserProvider } from '../contexts/UserContext';
 
 function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -47,10 +53,18 @@ function MyApp({ Component, pageProps }) {
 			</Head>
 			<div className='bg-homeBg min-h-screen dark:bg-homeBg-dark bg-no-repeat bg-center bg-cover bg-fixed md:pb-16 w-full'>
 				<div className='z-50'>
-					<div className='container'>
-						<Navbar />
-						<Component {...pageProps} />
-					</div>
+					<UserProvider>
+						<div className='container'>
+							<Navbar />
+							<ResumeProvider>
+								<ProjectsProvider>
+									<CertificatesProvider>
+										<Component {...pageProps} />
+									</CertificatesProvider>
+								</ProjectsProvider>
+							</ResumeProvider>
+						</div>
+					</UserProvider>
 				</div>
 			</div>
 			<Script

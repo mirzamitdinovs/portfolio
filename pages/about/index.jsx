@@ -5,7 +5,10 @@ import Footer from '../../components/Footer';
 import clientsData from '../../data/clients.data';
 import userData from '../../data/user.data';
 import whatidoData from '../../data/whatido.data';
+import { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 const AboutPage = () => {
+	const { user } = useContext(UserContext);
 	const settings = {
 		slidesToShow: 4,
 		slidesToScroll: 1,
@@ -51,7 +54,7 @@ const AboutPage = () => {
 								{/* about me image */}
 								<img
 									className='w-full md:w-[330px] md:h-[400px] object-cover overflow-hidden rounded-[35px] mb-3 md:mb-0'
-									src={userData.avatar2}
+									src={user.avatarAbout.fields.file.url}
 									alt='about image'
 								/>
 							</div>
@@ -63,7 +66,7 @@ const AboutPage = () => {
 										Who am i?{' '}
 									</h3>
 									<p className='text-gray-lite dark:text-color-910 leading-7'>
-										{userData.about}
+										{user.about}
 									</p>
 								</div>
 								<div>
@@ -72,23 +75,66 @@ const AboutPage = () => {
 										Personal Info{' '}
 									</h3>
 									<div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
-										{userData.personal_info.map((item, index) => (
-											<div key={index} className='flex'>
-												<span
-													className={`${item.color} shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-`}
-												>
-													{item.icon}
-												</span>
-												<div className='space-y-1'>
-													<p className='text-xs text-gray-lite dark:text-color-910'>
-														{item.title}
-													</p>
-													<h6 className='font-medium dark:text-white'>
-														{item.value}
-													</h6>
-												</div>
+										<div className='flex'>
+											<span
+												className={`text-oriange dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-`}
+											>
+												<i className='fa-solid fa-mobile-screen-button' />
+											</span>
+											<div className='space-y-1'>
+												<p className='text-xs text-gray-lite dark:text-color-910'>
+													Phone
+												</p>
+												<h6 className='font-medium dark:text-white'>
+													{user.phone}
+												</h6>
 											</div>
-										))}
+										</div>
+										<div className='flex'>
+											<span
+												className={`text-oriange-lite dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-`}
+											>
+												<i className='fa-solid fa-location-dot' />
+											</span>
+											<div className='space-y-1'>
+												<p className='text-xs text-gray-lite dark:text-color-910'>
+													Address
+												</p>
+												<h6 className='font-medium dark:text-white'>
+													{user.address}
+												</h6>
+											</div>
+										</div>
+										<div className='flex'>
+											<span
+												className={`text-green dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-`}
+											>
+												<i className='fa-solid fa-envelope-open-text' />
+											</span>
+											<div className='space-y-1'>
+												<p className='text-xs text-gray-lite dark:text-color-910'>
+													Email
+												</p>
+												<h6 className='font-medium dark:text-white'>
+													{user.email}
+												</h6>
+											</div>
+										</div>
+										<div className='flex'>
+											<span
+												className={`text-color-50 dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-`}
+											>
+												<i className='fa-solid fa-calendar-days' />
+											</span>
+											<div className='space-y-1'>
+												<p className='text-xs text-gray-lite dark:text-color-910'>
+													Birthday
+												</p>
+												<h6 className='font-medium dark:text-white'>
+													{user.birthday}
+												</h6>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

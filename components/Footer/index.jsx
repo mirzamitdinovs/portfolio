@@ -1,6 +1,8 @@
-import userData from '../../data/user.data';
+import { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 
 const Footer = () => {
+	const { user } = useContext(UserContext);
 	return (
 		<footer
 			className='overflow-hidden rounded-b-2xl'
@@ -8,7 +10,7 @@ const Footer = () => {
 		>
 			<p className='text-center py-6 text-gray-lite dark:text-color-910'>
 				{' '}
-				© 2022 All Rights Reserved by <strong>{userData.full_name}</strong>
+				© 2022 All Rights Reserved by <strong>{user.name}</strong>
 			</p>
 		</footer>
 	);

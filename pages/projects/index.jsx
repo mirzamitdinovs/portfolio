@@ -1,12 +1,18 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import ProjectModal from '../../components/ProjectModal';
 import projectsData from '../../data/projects.data';
 import Footer from '../../components/Footer';
+import ProjectsContext from '../../contexts/ProjectsContext';
+import Loader from '../../components/Loader';
 const Projects = () => {
+	const { projects } = useContext(ProjectsContext);
 	const modalRef = useRef(null);
 
+	if (!projects) {
+		return <Loader />;
+	}
 	return (
 		<div>
 			<div className='bg-white lg:rounded-2xl dark:bg-[#111111]'>
@@ -16,7 +22,7 @@ const Projects = () => {
 							Projects
 						</h2>
 						<div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[30px] grid gap-x-10 gap-y-7 mb-6'>
-							{projectsData.map((item, index) => (
+							{projects.map((item, index) => (
 								<div
 									key={index}
 									onClick={() => modalRef.current.open(item)}
@@ -24,16 +30,16 @@ const Projects = () => {
 								>
 									<div className='overflow-hidden  rounded-lg'>
 										<img
-											className='rounded-lg w-full object-fill h-40 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
-											src={item.images[0]}
+											className='rounded-lg w-full object-cover h-40 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
+											src={item.fields.images[0].fields.file.url}
 											alt='blog image'
 										/>
 									</div>
 									<div className='px-2 flex mt-4 text-tiny text-gray-lite dark:text-[#A6A6A6]'>
-										<span>{item.category}</span>
+										<span>{item.fields.category}</span>
 									</div>
 									<h3 className='text-lg px-2 font-medium dark:text-white duration-300 transition cursor-pointer mt-3 pr-4 hover:text-[#FA5252] dark:hover:text-[#FA5252]'>
-										{item.title}
+										{item.fields.title}
 									</h3>
 								</div>
 							))}
