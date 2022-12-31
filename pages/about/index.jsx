@@ -144,7 +144,7 @@ const AboutPage = () => {
 						</div>
 					</div>
 					{/* whai i do contain */}
-					<div className='pb-12'>
+					{/* <div className='pb-12'>
 						<h3 className='text-[35px] dark:text-white font-medium pb-5'>
 							{' '}
 							What I do!{' '}
@@ -171,15 +171,13 @@ const AboutPage = () => {
 								</div>
 							))}
 						</div>
-					</div>
+					</div> */}
 					{/* what i do contain end */}
-					<div>
+					{/* <div>
 						<div className='bg-[#F8FBFB] dark:bg-[#0D0D0D] max-w-full h-auto py-10 rounded-xl'>
 							<h3 className='text-center dark:text-white text-6xl mb-3 font-semibold'>
 								Clients
 							</h3>
-							{/* slider and slider items start */}
-							{/* <div className='slickTwo px-2 pt-8'> */}
 							<Slider {...settings} className='px-2 pt-8'>
 								{clientsData.map((item, index) => (
 									<div key={index}>
@@ -191,10 +189,8 @@ const AboutPage = () => {
 									</div>
 								))}
 							</Slider>
-							{/* </div> */}
-							{/* slider and slider items end */}
 						</div>
-					</div>
+					</div> */}
 					<Footer />
 				</div>
 			</div>

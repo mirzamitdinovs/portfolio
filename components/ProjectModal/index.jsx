@@ -32,7 +32,7 @@ const ProjectModal = (props, ref) => {
 							{item.fields.images?.map((image, index) => (
 								<div key={index} className='h-80 w-full'>
 									<Image
-										className='h-full w-full object-cover'
+										className='h-full w-full object-contain'
 										src={`https:${image.fields.file.url}`}
 										alt='brand'
 										width={500}

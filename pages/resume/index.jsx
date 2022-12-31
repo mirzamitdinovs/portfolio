@@ -83,12 +83,12 @@ const ResumePage = () => {
 				</div>
 				{/* working skills */}
 				<div className='container bg-[#f8fbfb] dark:bg-[#0D0D0D] py-12 px-4 sm:px-5 md:px-10 lg:px-20'>
-					<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-						<div className='col-span-1'>
-							<h4 className='text-5xl dark:text-white font-medium mb-6'>
-								{' '}
-								Working Skills{' '}
-							</h4>
+					<div>
+						<h4 className='text-5xl dark:text-white font-medium mb-6'>
+							{' '}
+							Working Skills{' '}
+						</h4>
+						<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 							{resume.skills.map((item, index) => (
 								<div key={index} className='mb-5'>
 									<div className='flex justify-between mb-1'>
@@ -108,21 +108,20 @@ const ResumePage = () => {
 								</div>
 							))}
 						</div>
-						{/* button group */}
-						<div className='col-span-1'>
-							<h4 className='text-5xl dark:text-white font-medium mb-8'>
-								{' '}
-								Knowledges{' '}
-							</h4>
-							<div className='flex gap-x-3 gap-y-3 md:gap-y-6 md:gap-x-4 flex-wrap'>
-								{resume.knowledges.map((item, index) => (
-									<button key={index} className='resume-btn'>
-										{item.fields.title}
-									</button>
-								))}
-							</div>
+					</div>
+
+					<div className='mt-5'>
+						<h4 className='text-5xl dark:text-white font-medium mb-8'>
+							{' '}
+							Knowledges{' '}
+						</h4>
+						<div className='flex gap-x-3 gap-y-3 md:gap-y-6 md:gap-x-4 flex-wrap'>
+							{resume.knowledges.map((item, index) => (
+								<button key={index} className='resume-btn'>
+									{item.fields.title}
+								</button>
+							))}
 						</div>
-						{/* end button group */}
 					</div>
 				</div>
 				<Footer />

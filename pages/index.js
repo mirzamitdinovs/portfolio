@@ -26,7 +26,7 @@ export default function Home() {
 				{user.socialLinks.map((item, index) => (
 					<a
 						key={index}
-						href={item.fields.url}
+						href={item.fields.name.toLowerCase().includes('what')? `https://wa.me/${item.fields.url}` :item.fields.url}
 						target='_blank'
 						rel='noopener noreferrer'
 					>

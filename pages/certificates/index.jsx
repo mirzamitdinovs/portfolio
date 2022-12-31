@@ -11,9 +11,9 @@ const CertificatesPage = () => {
 
 	useEffect(() => {
 		if (!categories.length && certificates) {
-			setCategories([
-				...new Set(certificates.map((item) => item.fields.school)),
-			]);
+			setCategories(
+				[...new Set(certificates.map((item) => item.fields.school))].sort()
+			);
 		}
 	}, [certificates]);
 	const modalRef = useRef(null);
@@ -77,7 +77,7 @@ const CertificatesPage = () => {
 							>
 								<div className='overflow- rounded-lg'>
 									<Image
-										className='rounded-lg w-full object-cover h-40 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
+										className='rounded-lg w-full object-contain h-40 mt-2 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
 										src={`https:${item.fields.image.fields.file.url}`}
 										alt='blog image'
 										width={300}

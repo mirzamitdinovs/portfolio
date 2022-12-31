@@ -333,43 +333,6 @@
 				});
 			});
 		},
-
-		// slick slider active function
-
-		istopeActivation: function () {
-			// ----------------------------- isotop gallery
-
-			$(window).on('load', function () {
-				if ($('#isotop-gallery-wrapper').length) {
-					var $grid = $('#isotop-gallery-wrapper').isotope({
-						// options
-						itemSelector: '.isotop-item',
-						percentPosition: true,
-						masonry: {
-							// use element for option
-							columnWidth: '.grid-sizer',
-						},
-					});
-
-					// filter items on button click
-					$('.isotop-menu-wrapper').on('click', 'li', function () {
-						var filterValue = $(this).attr('data-filter');
-						$grid.isotope({ filter: filterValue });
-					});
-
-					// change is-checked class on buttons
-					$('.isotop-menu-wrapper').each(function (i, buttonGroup) {
-						var $buttonGroup = $(buttonGroup);
-						$buttonGroup.on('click', 'li', function () {
-							$buttonGroup.find('.is-checked').removeClass('is-checked');
-							$(this).addClass('is-checked');
-						});
-					});
-				}
-			});
-		},
-
-		// slick slider active function
 	};
 	bostami.m();
 })(jQuery, window);

@@ -19,7 +19,7 @@ const Projects = () => {
 			<div className='bg-white lg:rounded-2xl dark:bg-[#111111]'>
 				<div className='container px-4 sm:px-5 md:px-10 lg:px-[60px]'>
 					<div className='py-12'>
-						<h2 className='after-effect after:left-40 mt-12 lg:mt-0'>
+						<h2 className='after-effect after:left-48 mt-12 lg:mt-0'>
 							Projects
 						</h2>
 						<div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[30px] grid gap-x-10 gap-y-7 mb-6'>
@@ -31,7 +31,7 @@ const Projects = () => {
 								>
 									<div className='overflow-hidden  rounded-lg'>
 										<Image
-											className='rounded-lg w-full object-cover h-40 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
+											className='rounded-lg w-full object-contain h-40 cursor-pointer transition duration-200 ease-in-out transform hover:scale-110'
 											src={`https:${item.fields.images[0].fields.file.url}`}
 											alt='blog image'
 											width={300}

@@ -19,21 +19,23 @@ const CertificateModal = (props, ref) => {
 				<div className='dark:scrollbarDark scrollbarLight overflow-y-scroll max-h-[60vh] lg:max-h-[80vh]'>
 					<div className='pr-3 pb-2'>
 						<Image
-							className='h-full w-full object-cover'
+							className='h-full w-full object-contain '
 							src={`https:${item.fields.image.fields.file.url}`}
 							alt='brand'
 							width={500}
 							height={450}
 						/>
-						<h2 className='dark:text-white sm:text-3xl mt-4 font-medium underline text-blue-500'>
+
+						<div className='mt-5'>
 							<a
+								className='dark:text-white sm:text-3xl mt-6 font-medium underline text-blue-500 '
 								target={'_blank'}
 								rel='noopener noreferrer'
-								href={item.fields.link}
+								href={item.fields.url}
 							>
 								{item.fields?.title}
 							</a>
-						</h2>
+						</div>
 						<div className='dark:text-white font-normal my-4'>
 							{documentToReactComponents(item.fields?.description)}
 						</div>

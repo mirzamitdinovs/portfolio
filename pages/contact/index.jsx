@@ -1,9 +1,29 @@
-import { useContext } from 'react';
+import emailjs from '@emailjs/browser';
+import { useContext, useRef } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../../components/Footer';
 import UserContext from '../../contexts/UserContext';
 
 const ContactPage = () => {
+	const form = useRef(null);
 	const { user } = useContext(UserContext);
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const res = await emailjs.sendForm(
+				'service_40cf18f',
+				'template_an9ge62',
+				form.current,
+				'Gn65mP23KjfEbtqm5'
+			);
+			toast.success('Email has been sent!');
+			e.target.reset();
+		} catch (err) {
+			console.log('err: ', err.message);
+		}
+	};
 	return (
 		<div className='bg-white lg:rounded-2xl dark:bg-[#111111]'>
 			<div data-aos='fade' className='aos-init aos-animate'>
@@ -87,17 +107,13 @@ const ContactPage = () => {
 											development work or partnerships.
 										</span>
 									</h3>
-									<form
-										id='myForm'
-										action='https://formspree.io/f/xoqrgaab'
-										method='POST'
-									>
+									<form ref={form} onSubmit={handleSubmit}>
 										{/* name input */}
 										<div className='relative z-0 w-full mt-[40px] mb-8 group'>
 											<input
 												type='text'
 												id='name'
-												name='name'
+												name='from_name'
 												className='block autofill:bg-transparent py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-[#B5B5B5] appearance-none dark:text-white dark:border-[#333333] dark:focus:border-[#FF6464] focus:outline-none focus:ring-0 focus:border-[#FF6464] peer'
 												placeholder=' '
 												required
@@ -113,7 +129,7 @@ const ContactPage = () => {
 										<div className='relative z-0 w-full mb-8 group'>
 											<input
 												type='email'
-												name='user_email'
+												name='email'
 												className='block autofill:text-red-900 needed py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-[#B5B5B5] appearance-none dark:text-white dark:border-[#333333] dark:focus:border-[#FF6464] focus:outline-none focus:ring-0 focus:border-[#5185D4] peer'
 												placeholder=' '
 												id='user_email'
@@ -159,6 +175,7 @@ const ContactPage = () => {
 				</div>
 				<Footer />
 			</div>
+			<ToastContainer autoClose={2000} />
 		</div>
 	);
 };

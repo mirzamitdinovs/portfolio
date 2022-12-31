@@ -10,15 +10,20 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.2",
+    "@emailjs/browser": "^3.10.0",
+    "axios": "^1.2.2",
     "contentful": "^9.2.14",
+    "emailjs-com": "^3.2.0",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "jquery": "^3.6.1",
     "next": "13.0.6",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-modal": "^3.16.1",
     "react-slick": "^0.29.0",
+    "react-toastify": "^9.1.1",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ import { CertificatesProvider } from '../contexts/CertificatesContext';
 import { ProjectsProvider } from '../contexts/ProjectsContext';
 import { ResumeProvider } from '../contexts/ResumeContext';
 import { UserProvider } from '../contexts/UserContext';
+import { ThemeProvider } from 'next-themes';
 
 function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -46,11 +47,11 @@ function MyApp({ Component, pageProps }) {
 				/>
 				{/*=== main css ===*/}
 				<link rel='stylesheet' href='css/tailwind.css' />
-				<link rel='stylesheet' href='css/vendor/jquery.modal.min.css' />
 
 				<link rel='stylesheet' href='css/custom.css' />
 				<title>Sayyod Mirzamitdinov</title>
 			</Head>
+			{/* <ThemeProvider defaultTheme='dark'> */}
 			<div className='bg-homeBg min-h-screen dark:bg-homeBg-dark bg-no-repeat bg-center bg-cover bg-fixed md:pb-16 w-full'>
 				<div className='z-50'>
 					<UserProvider>
@@ -67,6 +68,7 @@ function MyApp({ Component, pageProps }) {
 					</UserProvider>
 				</div>
 			</div>
+			{/* </ThemeProvider> */}
 			<Script
 				strategy='beforeInteractive'
 				src='js/vendor/jquary.min.js'
