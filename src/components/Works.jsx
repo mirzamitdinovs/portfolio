@@ -40,12 +40,6 @@ function getRandomColor() {
 }
 
 const ProjectCard = ({ index, title, description, image, tags }) => {
-	console.log('{index, title, description, image}: ', {
-		index,
-		title,
-		description,
-		image,
-	});
 	return (
 		<motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
 			<Tilt
@@ -99,7 +93,6 @@ const ProjectCard = ({ index, title, description, image, tags }) => {
 };
 
 const Works = ({ data }) => {
-	console.log('data: ', data);
 	return (
 		<>
 			<motion.div variants={textVariant()}>
