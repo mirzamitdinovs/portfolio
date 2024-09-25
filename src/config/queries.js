@@ -1,0 +1,57 @@
+export const PROJECTS_SCHEMA = `*[_type == "project"]{
+  _id,
+  title,
+  description,
+  visible,
+  images[]{
+    asset->{
+      url
+    }
+  },
+  tags[]->{
+    name
+  }
+}`;
+export const PROJECT_DETAILS_SCHEMA = `*[_type == "project"]{
+  _id,
+  title,
+  description,
+  startDate,
+  finishDate,
+  role,
+  visible,
+  images[]{
+    asset->{
+      url
+    }
+  },
+  client->{
+    name,
+    logo{
+      asset->{
+        url
+      }
+    }
+  },
+  technologies[]->{
+    name,
+    image{
+      asset->{
+        url
+      }
+    }
+  },
+  challenges[]->{
+    challenge,
+    solution
+  },
+  whatILearned[]->{
+    lesson
+  },
+  responsibilities[]->{
+    description
+  },
+  tags[]->{
+    name
+  }
+}`;
