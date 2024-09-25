@@ -20,6 +20,7 @@ import {
 } from './config/queries';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { loader } from './assets';
 
 const App = () => {
 	const [projects, setProjects] = useState([]);
@@ -30,6 +31,13 @@ const App = () => {
 	useEffect(() => {
 		getData();
 	}, []);
+
+	useEffect(() => {
+		if (user && user.first_name) {
+			document.title = `${user.first_name} | Portfolio`;
+		}
+	}, [user]);
+
 	const getData = async () => {
 		const [projects, [user], technologies, experience] = await axios.all([
 			client.fetch(PROJECTS_SCHEMA),
@@ -45,7 +53,12 @@ const App = () => {
 		setLoading(false);
 	};
 
-	if (loading) return <h2>Loading...</h2>;
+	if (loading)
+		return (
+			<div className='h-screen w-full flex items-center justify-center bg-primary'>
+				<img className='h-52 w-52 ' src={loader} />
+			</div>
+		);
 	return (
 		<BrowserRouter>
 			<div className='relative z-0 bg-primary'>
