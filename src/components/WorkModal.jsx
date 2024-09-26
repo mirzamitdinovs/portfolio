@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle, useState } from 'react';
 import { StarsCanvas } from './canvas';
 import { close } from '../assets';
 const WorkModal = (props, ref) => {
-	const [toggle, setToggle] = useState(true);
+	const [toggle, setToggle] = useState(false);
 	const [data, setData] = useState(null);
 
 	useImperativeHandle(ref, () => ({
