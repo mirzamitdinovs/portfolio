@@ -1,12 +1,11 @@
-import React from 'react';
-import Tilt from 'react-tilt';
 import { motion } from 'framer-motion';
+import React from 'react';
+import Tilt from 'react-parallax-tilt';
 
-import { styles } from '../styles';
-import { services } from '../constants';
-import { SectionWrapper } from '../hoc';
-import { fadeIn, textVariant } from '../utils/motion';
 import { urlFor } from '../client';
+import { SectionWrapper } from '../hoc';
+import { styles } from '../styles';
+import { fadeIn, textVariant } from '../utils/motion';
 
 const ServiceCard = ({ index, name, image }) => (
 	<Tilt className='xs:w-[250px] w-full'>

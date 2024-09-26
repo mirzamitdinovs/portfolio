@@ -67,5 +67,25 @@ export default {
         sortable: true,
       },
     },
+    {
+      name: 'technologies',
+      title: 'Technologies',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'technology'}]}],
+      options: {
+        // Enable drag-and-drop ordering within the array
+        sortable: true,
+      },
+    },
+    {
+      name: 'projects',
+      title: 'Projects',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'project'}]}],
+      options: {
+        // Enable drag-and-drop ordering within the array
+        sortable: true,
+      },
+    },
   ],
 }

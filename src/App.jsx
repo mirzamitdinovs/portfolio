@@ -1,5 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 
+import { useEffect, useState } from 'react';
+import { loader } from './assets';
+import { client } from './client';
 import {
 	About,
 	Contact,
@@ -7,26 +10,14 @@ import {
 	Feedbacks,
 	Hero,
 	Navbar,
+	StarsCanvas,
 	Tech,
 	Works,
-	StarsCanvas,
 } from './components';
-import { client } from './client';
-import {
-	EXPERIENCE_SCHEMA,
-	PROJECTS_SCHEMA,
-	TECHNOLOGIES_SCHEMA,
-	USER_SCHEMA,
-} from './config/queries';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { loader } from './assets';
+import { USER_SCHEMA } from './config/queries';
 
 const App = () => {
-	const [projects, setProjects] = useState([]);
 	const [user, setUser] = useState({});
-	const [technologies, setTechnologies] = useState([]);
-	const [experience, setExperience] = useState([]);
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		getData();
@@ -39,20 +30,14 @@ const App = () => {
 	}, [user]);
 
 	const getData = async () => {
-		const [projects, [user], technologies, experience] = await axios.all([
-			client.fetch(PROJECTS_SCHEMA),
-			client.fetch(USER_SCHEMA),
-			client.fetch(TECHNOLOGIES_SCHEMA),
-			client.fetch(EXPERIENCE_SCHEMA),
-		]);
+		const [user] = await client.fetch(USER_SCHEMA);
 
 		setUser(user);
-		setProjects(projects);
-		setTechnologies(technologies);
-		setExperience(experience);
+
 		setLoading(false);
 	};
 
+	console.log('user: ', user);
 	if (loading)
 		return (
 			<div className='h-screen w-full flex items-center justify-center bg-primary'>
@@ -68,8 +53,10 @@ const App = () => {
 				</div>
 				<About bio={user.detailed_bio} services={user.skills} />
 				<Experience experiences={user.experiences} />
-				<Tech technologies={technologies} />
-				<Works data={projects} />
+				<Tech technologies={user.technologies} />
+				<div className='relative z-20'>
+					<Works data={user.projects} />
+				</div>
 				<Feedbacks />
 				<div className='relative z-0'>
 					<Contact />

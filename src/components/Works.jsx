@@ -1,14 +1,13 @@
-import React from 'react';
-import Tilt from 'react-tilt';
 import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import Tilt from 'react-parallax-tilt';
 
-import { styles } from '../styles';
-import { github } from '../assets';
-import { SectionWrapper } from '../hoc';
-import { projects } from '../constants';
-import { fadeIn, textVariant } from '../utils/motion';
-import { s } from 'maath/dist/misc-7d870b3c.esm';
 import { urlFor } from '../client';
+import { SectionWrapper } from '../hoc';
+import { styles } from '../styles';
+import { fadeIn, textVariant } from '../utils/motion';
+import { eye, github } from '../assets';
+import WorkModal from './WorkModal';
 // Array of predefined colors
 const colors = [
 	'#3B82F6',
@@ -39,9 +38,24 @@ function getRandomColor() {
 	return colors[randomIndex];
 }
 
-const ProjectCard = ({ index, title, description, image, tags }) => {
+const ProjectCard = ({ index, project, onPreview }) => {
+	console.log('project: ', project);
+	const { title, description, images, tags, githubUrl, previewUrl } = project;
+
+	const handleOpenGithub = (e) => {
+		e.stopPropagation();
+		window.open(githubUrl, '_blank');
+	};
+	const handleOpenPreview = (e) => {
+		e.stopPropagation();
+		window.open(previewUrl, '_blank');
+	};
+
 	return (
-		<motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
+		<motion.div
+			onClick={() => onPreview(project)}
+			variants={fadeIn('up', 'spring', index * 0.5, 0.75)}
+		>
 			<Tilt
 				options={{
 					max: 45,
@@ -52,23 +66,37 @@ const ProjectCard = ({ index, title, description, image, tags }) => {
 			>
 				<div className='relative w-full h-[230px]'>
 					<img
-						src={urlFor(image)}
+						src={urlFor(images[0])}
 						alt='project_image'
 						className='w-full h-full object-cover rounded-2xl'
 					/>
 
-					{/* <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
-						<div
-							onClick={() => window.open(source_code_link, '_blank')}
-							className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-						>
-							<img
-								src={github}
-								alt='source code'
-								className='w-1/2 h-1/2 object-contain'
-							/>
-						</div>
-					</div> */}
+					<div className='absolute gap-1 inset-0 flex justify-end m-3 card-img_hover'>
+						{previewUrl && (
+							<button
+								onClick={handleOpenPreview}
+								className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+							>
+								<img
+									src={eye}
+									alt='source code'
+									className='w-1/2 h-1/2 object-contain '
+								/>
+							</button>
+						)}
+						{githubUrl && (
+							<button
+								onClick={handleOpenGithub}
+								className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+							>
+								<img
+									src={github}
+									alt='source code'
+									className='w-1/2 h-1/2 object-contain'
+								/>
+							</button>
+						)}
+					</div>
 				</div>
 
 				<div className='mt-5'>
@@ -93,6 +121,11 @@ const ProjectCard = ({ index, title, description, image, tags }) => {
 };
 
 const Works = ({ data }) => {
+	const previewRef = useRef(null);
+
+	const onPreview = (work) => {
+		previewRef.current.open(work);
+	};
 	return (
 		<>
 			<motion.div variants={textVariant()}>
@@ -118,15 +151,15 @@ const Works = ({ data }) => {
 					<ProjectCard
 						key={`project-${index}`}
 						index={index}
-						title={project.title}
-						description={project.description}
-						image={project.images[0]}
-						tags={project.tags}
+						project={project}
+						onPreview={onPreview}
 					/>
 				))}
 			</div>
+
+			<WorkModal ref={previewRef} />
 		</>
 	);
 };
 
-export default SectionWrapper(Works, '');
+export default SectionWrapper(Works, 'projects');

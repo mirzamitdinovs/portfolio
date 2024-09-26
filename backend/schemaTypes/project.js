@@ -82,23 +82,20 @@ export default {
       title: 'GitHub URL',
       type: 'url',
       validation: (Rule) =>
-        Rule.required()
-          .uri({
-            scheme: ['http', 'https'],
-          })
-          .error('Please provide a valid GitHub URL'),
+        Rule.uri({
+          scheme: ['http', 'https'],
+        }).error('Please provide a valid GitHub URL'),
     },
     {
       name: 'previewUrl',
       title: 'Preview URL',
       type: 'url',
       validation: (Rule) =>
-        Rule.required()
-          .uri({
-            scheme: ['http', 'https'],
-          })
-          .error('Please provide a valid Preview URL'),
+        Rule.uri({
+          scheme: ['http', 'https'],
+        }).error('Please provide a valid Preview URL'),
     },
+
     {
       name: 'visible',
       title: 'Visible',
