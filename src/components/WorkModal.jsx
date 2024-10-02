@@ -1,6 +1,8 @@
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { StarsCanvas } from './canvas';
 import { close } from '../assets';
+import { urlFor } from '../client';
+
 const WorkModal = (props, ref) => {
 	const [toggle, setToggle] = useState(false);
 	const [data, setData] = useState(null);
@@ -36,84 +38,57 @@ const WorkModal = (props, ref) => {
 						/>
 					</button>
 				</div>
-				<div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-					<div>
-						<h3 className='font-medium font-base-font text-white text-[35px] leading-[130.5%] mb-[20px] md:text-[25px] '>
-							{data.title}
-						</h3>
-						<p className='text-[16px] leading-[26px] font-normal text-[#D8D8D8] mb-[20px]'>
-							{data.description}
-						</p>
-					</div>
-					<div className=''>
-						<div className='max-w-[380px] ml-auto flex-[35%] lg:flex-[100%] mb-[50px] lg:mb-[40px] shadow-[0_8px_17px_0_rgba(0,0,0,20%),0_6px_20px_0_rgba(0,0,0,19%)] md:ml-0 md:max-w-full md:mt-[20px]'>
-							<ul className='py-[50px] px-[30px] shadow-[0px_2px_10px_rgba(14,29,44,0.15)] md:ml-0 md:max-w-full col:py-[50px] col:px-[20px]'>
-								<li className='flex pb-[10px] text-[16px] text-white font-semibold relative justify-between '>
-									Location :
-									<span className='text-[#D8D8D8] font-normal'>
-										7 Lake Street,London
-									</span>
-								</li>
-								<li className='flex py-[10px] text-[16px] text-white font-semibold relative justify-between '>
-									Client :
-									<span className='text-[#D8D8D8] font-normal'>wpOceans</span>
-								</li>
-								<li className='flex py-[10px] text-[16px] text-white font-semibold relative justify-between '>
-									Architect :
-									<span className='text-[#D8D8D8] font-normal'>
-										Harry Johnson
-									</span>
-								</li>
-								<li className='flex py-[10px] text-[16px] text-white font-semibold relative justify-between '>
-									Project Type :
-									<span className='text-[#D8D8D8] font-normal'>
-										Softwere Development
-									</span>
-								</li>
-								<li className='flex py-[10px] text-[16px] text-white font-semibold relative justify-between '>
-									Duration :
-									<span className='text-[#D8D8D8] font-normal'>6 Month</span>
-								</li>
-								<li className='flex py-[10px] text-[16px] text-white font-semibold relative justify-between '>
-									Completion :
-									<span className='text-[#D8D8D8] font-normal'>
-										15 Apr 2022
-									</span>
-								</li>
-								<li className='flex pt-[10px] text-[16px] text-white font-semibold relative justify-between '>
-									Share :
-									<span className='text-[#D8D8D8] font-normal'>
-										Web App, Marketing
-									</span>
-								</li>
-							</ul>
-						</div>
+
+				<div>
+					<h3 className='font-medium font-base-font text-white text-[35px] leading-[130.5%] mb-[20px] md:text-[25px] '>
+						{data.title}
+					</h3>
+					<p className='text-[16px] leading-[26px] font-normal text-[#D8D8D8] mb-[20px]'>
+						{data.description}
+					</p>
+
+					<div className='w-full ml-auto mb-[50px] lg:mb-[40px] shadow-[0_8px_17px_0_rgba(0,0,0,20%),0_6px_20px_0_rgba(0,0,0,19%)]'>
+						<ul className='w-full py-[10px] px-[30px] shadow-[0px_2px_10px_rgba(14,29,44,0.15)] flex justify-between gap-4'>
+							<li className='text-[16px] text-white font-semibold flex-1'>
+								Client :
+								<span className='text-[#D8D8D8] font-normal ml-2'>
+									wpOceans
+								</span>
+							</li>
+							<li className='text-[16px] text-white font-semibold flex-1'>
+								Project Type :
+								<span className='text-[#D8D8D8] font-normal ml-2'>Website</span>
+							</li>
+							<li className='text-[16px] text-white font-semibold flex-1'>
+								Completion :
+								<span className='text-[#D8D8D8] font-normal ml-2'>
+									15 Apr 2022
+								</span>
+							</li>
+							<li className='text-[16px] text-white font-semibold flex-1'>
+								Duration :
+								<span className='text-[#D8D8D8] font-normal ml-2'>
+									6 months
+								</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 
-				<div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-[15px]'>
+				<div className='gap-4 mt-[15px]'>
 					<div className=''>
 						<h3 className='font-medium font-base-font text-white text-[35px] leading-[130.5%] mb-[20px] md:text-[25px]'>
-							Resieved goals
+							Challenges
 						</h3>
-						<p className='text-[16px] leading-[26px] font-normal col:text-[14px] text-[#D8D8D8] mb-[20px]'>
-							Massa volutpat odio facilisis purus sit elementum. Non, sed velit
-							dictum quam. Id risus pharetra est, at rhoncus, nec ullamcorper
-							tincidunt. Id aliquet duis sollicitudin diam.
-						</p>
 						<ul>
-							<li className="py-[10px] text-white pl-[35px] col:text-[14px] relative before:absolute before:left-0 before:top-1/2 before:transform before:w-[25px] before:h-[25px] before:leading-[25px] before:rounded-[50%] before:text-center before:text-[14px] before:text-[#59C378] before:bg-[#59c3781a] before:-translate-y-1/2 before:font-['themify'] before:content-['\e64c']">
-								Non saed velit dictum quam risus pharetra esta.
-							</li>
-							<li className="py-[10px] text-white pl-[35px] col:text-[14px] relative before:absolute before:left-0 before:top-1/2 before:transform before:w-[25px] before:h-[25px] before:leading-[25px] before:rounded-[50%] before:text-center before:text-[14px] before:text-[#59C378] before:bg-[#59c3781a] before:-translate-y-1/2 before:font-['themify'] before:content-['\e64c']">
-								Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.
-							</li>
-							<li className="py-[10px] text-white pl-[35px] col:text-[14px] relative before:absolute before:left-0 before:top-1/2 before:transform before:w-[25px] before:h-[25px] before:leading-[25px] before:rounded-[50%] before:text-center before:text-[14px] before:text-[#59C378] before:bg-[#59c3781a] before:-translate-y-1/2 before:font-['themify'] before:content-['\e64c']">
-								Hac nibh fermentum nisi, platea condimentum cursus.
-							</li>
-							<li className="py-[10px] text-white pl-[35px] col:text-[14px] relative before:absolute before:left-0 before:top-1/2 before:transform before:w-[25px] before:h-[25px] before:leading-[25px] before:rounded-[50%] before:text-center before:text-[14px] before:text-[#59C378] before:bg-[#59c3781a] before:-translate-y-1/2 before:font-['themify'] before:content-['\e64c']">
-								Massa volutpat odio facilisis purus sit elementum.
-							</li>
+							{data.challenges.map((challenge, index) => (
+								<li
+									index={index}
+									className="py-[10px] text-white pl-[35px] col:text-[14px] relative before:absolute before:left-0 before:top-1/2 before:transform before:w-[25px] before:h-[25px] before:leading-[25px] before:rounded-[50%] before:text-center before:text-[14px] before:text-[#59C378] before:bg-[#59c3781a] before:-translate-y-1/2 before:font-['themify'] before:content-['\e64c']"
+								>
+									Non saed velit dictum quam risus pharetra esta.
+								</li>
+							))}
 						</ul>
 					</div>
 					<div className='md:mt-[40px]'>

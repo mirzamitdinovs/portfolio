@@ -51,18 +51,48 @@ export const USER_SCHEMA = `*[_type == "user"]{
   projects[]->{
     _id,
     title,
-    description,
-    visible,
     githubUrl,
     previewUrl,
+    description,
+    startDate,
+    finishDate,
+    role,
+    visible,
     images[]{
       asset->{
         url
       }
     },
+    client->{
+      name,
+      logo{
+        asset->{
+          url
+        }
+      }
+    },
+    technologies[]->{
+      name,
+      image{
+        asset->{
+          url
+        }
+      }
+    },
+    challenges[]->{
+      challenge,
+      solution
+    },
+    whatILearned[]->{
+      lesson
+    },
+    responsibilities[]->{
+      description
+    },
     tags[]->{
       name
     }
+
   },
   technologies[]->{
     _id,
