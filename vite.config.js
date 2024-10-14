@@ -13,4 +13,14 @@ export default defineConfig({
 	define: {
 		'process.env': {},
 	},
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					vendor: ['react', 'react-dom'], // Add other large packages here
+				},
+			},
+		},
+		chunkSizeWarningLimit: 2000, // Optionally, increase this limit
+	},
 });
